@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto py-8 px-4">
+    <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        {% if object.thumbnail %}
+        <img class="w-full h-64 object-cover" src="{{ object.thumbnail.url }}" alt="{{ object.title }}">
+        {% endif %}
+        <div class="p-6">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ object.title }}</h1>
+            <p class="text-gray-600 text-sm mb-4">{{ object.published_at|date:"F j, Y" }} by {{ object.author.username }}</p>
+            <div class="prose prose-lg max-w-none text-gray-800 mb-8">
+                {{ object.content|safe }}
+            </div>
+            
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <form method="POST" action="{% url 'like_post' object.slug %}">
+                        {% csrf_token %}
+                        {% if is_liked %}
+                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                            Unlike ({{ total_likes }})
+                        </button>
+                        {% else %}
+                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                            Like ({{ total_likes }})
+                        </button>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    {% for tag in object.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}" class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        #{{ tag.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Comments</h2>
+
+            <div>
+                {% for comment in comments %}
+                <div class="mb-4">
+                    <p class="text-sm text-gray-600 mb-1"><strong>{{ comment.author }}</strong> on {{ comment.created_at|date:"F j, Y, g:i a" }}</p>
+                    <p class="text-gray-800">{{ comment.content }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <hr class="my-8">
+
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Add a Comment</h3>
+
+            <form method="POST" action="{% url 'add_comment' object.slug %}">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                    Submit Comment
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
