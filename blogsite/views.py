@@ -54,16 +54,39 @@ def add_comment(request, slug):
     return redirect("post_detail", slug=slug)
 
 
+class CategoryListView(ListView):
+    model = Category
+    template_name = "blog/category_list.html"
+    context_object_name = "categories"
+
+
 class CategoryDetailView(DetailView):
     model = Category
     template_name = "blog/category_detail.html"
     context_object_name = "category"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = self.get_object()
+        context["posts"] = category.posts.all()
+        return context
+
+
+class TagListView(ListView):
+    model = Tag
+    template_name = "blog/tag_list.html"
+    context_object_name = "tags"
 
 
 class TagDetailView(DetailView):
     model = Tag
     template_name = "blog/tag_detail.html"
     context_object_name = "tag"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["posts"] = Post.objects.filter(tags=self.object)
+        return context
 
 
 class PostLikeView(View):

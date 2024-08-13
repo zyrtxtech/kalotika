@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Tags</h1>
+    <ul class="space-y-2">
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'tag_detail' tag.slug %}" class="text-indigo-600 hover:text-indigo-800">
+                    {{ tag.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

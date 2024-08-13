@@ -36,8 +36,8 @@
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
                             <a href="{% url 'post_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                            <a href="{% url 'category_detail' slug='example-category' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categories</a>
-                            <a href="{% url 'tag_detail' slug='example-tag' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tags</a>
+                            <a href="{% url 'category_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+                            <a href="{% url 'tag_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tags</a>
                             <a href="{% url 'archive' year=2024 month=8 %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Archives</a>
                             {% if user.is_authenticated %}
                             {% else %}
@@ -52,8 +52,8 @@
         <div class="sm:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="{% url 'post_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="{% url 'category_detail' slug='example-category' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Categories</a>
-                <a href="{% url 'tag_detail' slug='example-tag' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tags</a>
+                <a href="{% url 'category_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <a href="{% url 'tag_list' %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tags</a>
                 <a href="{% url 'archive' year=2024 month=8 %}" class="text-gray-300 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Archives</a>
                 {% if user.is_authenticated %}
                 {% else %}
