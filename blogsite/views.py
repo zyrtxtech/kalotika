@@ -24,6 +24,9 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
+        # context["tags"] = post.tags.all()
+        # context["categories"] = post.categories.all()
+        # context[""]
         context["total_likes"] = post.total_likes()
         context["is_liked"] = post.likes.filter(id=self.request.user.id).exists()
         context["comments"] = Comment.objects.filter(post=post, approved=True).order_by(
