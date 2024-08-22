@@ -11,17 +11,17 @@
 
     {% load static %}
     <!--====== Favicon Icon ======-->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/LineIcons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/nivo-lightbox.css">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">    
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/LineIcons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nivo-lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
     <!-- google verification -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5817304792674510"
@@ -39,7 +39,7 @@
         </div> 
         <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
           <div class="container">
-            <a href="{% url 'post_list' %}"  class="navbar-brand"><img src="img/logo.png" alt="kalotika logo"></a>      
+            <a href="{% url 'post_list' %}"  class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt="kalotika logo"></a>      
             <form class="search-container">
               <input type="text" name="search" placeholder="Search..." class="search-input">
               <i class="lni-search"></i>     
@@ -84,11 +84,8 @@
         </nav>          
       </header>
 
-    <!-- Main content -->
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        {% block content %}
-        {% endblock %}
-    </div>
+      {% block content %}
+      {% endblock %}
 
     <!-- Footer -->
 <!-- Footer Section Start -->
@@ -186,19 +183,20 @@
       <!-- End Preloader -->
   
       <!-- jQuery first, then Tether, then Bootstrap JS. -->
-      <script src="js/script.js"></script>
-      <script src="js/jquery-min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/owl.carousel.js"></script>      
-      <script src="js/jquery.nav.js"></script>    
-      <script src="js/scrolling-nav.js"></script>    
-      <script src="js/jquery.easing.min.js"></script>     
-      <script src="js/nivo-lightbox.js"></script>     
-      <script src="js/jquery.magnific-popup.min.js"></script>     
-      <script src="js/form-validator.min.js"></script>
-      <script src="js/contact-form-script.js"></script>   
-      <script src="js/main.js"></script>
+      <script src="{% static 'js/script.js' %}"></script>
+      <script src="{% static 'js/jquery-min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/owl.carousel.js' %}"></script>      
+      <script src="{% static 'js/jquery.nav.js' %}"></script>    
+      <script src="{% static 'js/scrolling-nav.js' %}"></script>    
+      <script src="{% static 'js/jquery.easing.min.js' %}"></script>     
+      <script src="{% static 'js/nivo-lightbox.js' %}"></script>     
+      <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>     
+      <script src="{% static 'js/form-validator.min.js' %}"></script>
+      <script src="{% static 'js/contact-form-script.js' %}"></script>   
+      <script src="{% static 'js/main.js' %}"></script>
+
       
 
       {% block extra_scripts %}{% endblock %}
