@@ -105,29 +105,12 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
     margin-right: 10px; /* Space between the line and the title text */
   }
   
-  /* Categories Header */
 
-  .section-header-category .section-title-category {
-    font-size: 25px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-weight: 600;
-    position: relative;
-    line-height: 30px;
-    text-align: left; /* Aligns the title to the left */
-    display: flex;
-    align-items: center; /* Aligns text with the line vertically */
-  }
-  
-  .section-header-category .section-title-category .line {
-    content: '';
-    display: inline-block;
-    width: 3px; /* Width of the line */
-    height: 20px; /* Height of the line to match the line height */
-    background-color: #230a00; /* Line color */
-    margin-right: 10px; /* Space between the line and the title text */
-  }
-  
+.section-header .desc-text p {
+  font-size: 18px;
+  color: #333333;
+  line-height: 30px;
+  margin-bottom: 0; }
 
 /* ==========================================================================
    Buttons
@@ -1806,43 +1789,3 @@ body {
   text-decoration: underline;
 }
 
-
-/* Blog Page */
-
-/* Categories Section */
-.categories {
-  font-size: 15px;
-}
-
-.categories li{
-  padding: 10px;
-}
-
-.categories li:hover {
-  background-color: #fff;
-}
-
-.media {
-  padding: 10px;
-  margin-bottom: 30px;
-}
-
-.media:hover {
-  background-color: #ffeee7;
-}
-
-.media-body small {
-  margin-top: 200px;
-}
-
-.media-body h5 {
-  margin-bottom: 2px;
-}
-
-.media-body p {
-  font-size: 15px;
-}
-
-.media .img-fluid {
-  width: 180px;
-}
