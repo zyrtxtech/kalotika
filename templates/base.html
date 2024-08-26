@@ -98,7 +98,7 @@
                 <!-- Start Col -->
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
                     <div class="footer-logo">
-                        <img src="img/footer-logo.png" alt="Footer Logo">
+                        <img src="{% static 'img/footer-logo.png' %}" alt="Footer Logo">
                     </div>
                 </div>
                 <!-- End Col -->
@@ -132,7 +132,7 @@
                   <div class="widget">
                       <h3 class="block-title">Social Media</h3>
                       <ul class="menu">
-                          <li><a href="#"> Facebook</a></li>
+                          <li><a href="#">Facebook</a></li>
                           <li><a href="#">Instagram</a></li>
                           <li><a href="#">X</a></li>
   
@@ -196,6 +196,9 @@
       <script src="{% static 'js/form-validator.min.js' %}"></script>
       <script src="{% static 'js/contact-form-script.js' %}"></script>   
       <script src="{% static 'js/main.js' %}"></script>
+
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v20.0" nonce="jKb3pArI"></script>
 
       
 

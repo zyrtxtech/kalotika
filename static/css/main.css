@@ -452,7 +452,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
    ========================================================================== */
 
    nav {
-    background-color: #ffeee7;
+    background-color: #fff;
    }
    .logo-menu a {
     font-size: 20px;
@@ -645,7 +645,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
    ========================================================================== */
    .hero-area {
     position: relative;
-    background-image: url('/img/hero-area.jpg'); /* Add your image path here */
+    background-color: #feeff8; /* Add your image path here */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1540,7 +1540,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   }
 
   .blog-item {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
 
@@ -1789,3 +1789,17 @@ body {
   text-decoration: underline;
 }
 
+/* Thumbnail */
+
+.blog-item-img {
+    width: 100%;
+    height: 200px; /* Adjust the height to your desired size */
+    overflow: hidden; /* Ensures that the image is clipped */
+}
+
+.blog-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+  object-position: center;
+}
