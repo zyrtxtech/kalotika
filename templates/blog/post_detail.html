@@ -12,7 +12,7 @@
                     {% endif %}
                     <div class="overlay position-relative bg-light">
                         <div class="mb-3">
-                            <a href="{{ trending.category.get_absolute_url }}">{{ object.category.name }}</a> 
+                            <a href="{{ object.category.get_absolute_url }}">{{ object.category.name }}</a> 
                             <span class="px-1">/</span>
                             <span>{{ object.published_at|date:"F j, Y" }}</span>
                         </div>
