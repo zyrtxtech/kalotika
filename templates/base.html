@@ -27,6 +27,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5817304792674510"
     crossorigin="anonymous"></script>
 
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0" nonce="L0flsUju"></script>
+
     {% block extra_head %}{% endblock %}
   </head>
   
@@ -118,10 +120,9 @@
                     <div class="widget">
                         <h3 class="block-title">Categories</h3>
                         <ul class="menu">
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Lifestyle</a></li>
-                            <li><a href="#">Entertainment</a></li>
-                            <li><a href="#">News</a></li>
+                            {% for category in categories %}
+                            <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

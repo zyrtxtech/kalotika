@@ -12,7 +12,7 @@
                     {% endif %}
                     <div class="overlay position-relative bg-light">
                         <div class="mb-3">
-                            <a href="{{ trending.category.get_absolute_url }}">{{ trending.category.name }}</a> 
+                            <a href="{{ trending.category.get_absolute_url }}">{{ object.category.name }}</a> 
                             <span class="px-1">/</span>
                             <span>{{ object.published_at|date:"F j, Y" }}</span>
                         </div>
@@ -26,7 +26,9 @@
                 </div>
                 <!-- News Detail End -->
 
-                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
+                <div class="fb-like" data-href="http://127.0.0.1:8000/blog/dsfd/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
+
+                <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/{{post.post_id}}" data-width="" data-numposts="5"></div>
                 
             </div>
             
