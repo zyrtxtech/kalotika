@@ -638,6 +638,66 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
     margin-right: 10px;
     transition: color 0.3s ease;
 } 
+
+
+/* ==========================================================================
+   Section Title
+   ========================================================================== */
+   .section {
+    padding: 130px 0px; }
+  
+  .form-control:focus {
+    outline: none;
+    box-shadow: none; }
+  
+  .section-header {
+    color: #fff;
+    margin-bottom: 50px;
+    text-align: left;
+    position: relative; }
+  
+    .section-header .section-title {
+      font-size: 35px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      position: relative;
+      line-height: 30px;
+      text-align: left; /* Aligns the title to the left */
+      display: flex;
+      align-items: center; /* Aligns text with the line vertically */
+    }
+    
+    .section-header .section-title .line {
+      content: '';
+      display: inline-block;
+      width: 5px; /* Width of the line */
+      height: 30px; /* Height of the line to match the line height */
+      background-color: #230a00; /* Line color */
+      margin-right: 10px; /* Space between the line and the title text */
+    }
+    
+    /* Categories Header */
+  
+    .section-header-category .section-title-category {
+      font-size: 25px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      font-weight: 600;
+      position: relative;
+      line-height: 30px;
+      text-align: left; /* Aligns the title to the left */
+      display: flex;
+      align-items: center; /* Aligns text with the line vertically */
+    }
+    
+    .section-header-category .section-title-category .line {
+      content: '';
+      display: inline-block;
+      width: 3px; /* Width of the line */
+      height: 20px; /* Height of the line to match the line height */
+      background-color: #230a00; /* Line color */
+      margin-right: 10px; /* Space between the line and the title text */
+    }
   
 
 /* ==========================================================================
@@ -1802,4 +1862,48 @@ body {
   height: 100%;
   object-fit: cover; /* Ensures the image covers the entire container */
   object-position: center;
+}
+
+
+/* Categories Section */
+.categories {
+  font-size: 15px;
+}
+
+.categories li{
+  padding: 10px;
+  width: 350px;
+}
+
+.categories li:hover {
+  background-color: #e9e8e8;
+}
+
+/* media image */
+
+.media {
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.media:hover {
+  background-color: #e9e8e8;
+}
+
+.media-body .small {
+  margin-top: 300px;
+}
+
+.media-body h5 {
+  margin-bottom: 2px;
+}
+
+.media-body p {
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.media .img-fluid {
+  width: 180px;
 }

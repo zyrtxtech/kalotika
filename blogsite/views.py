@@ -33,7 +33,10 @@ class PostDetailView(DetailView):
             "-created_at"
         )
         context["comment_form"] = CommentForm()
+        context["trending_posts"] = Post.objects.filter(is_draft=False).order_by('-published_at')[:5]
+        context["categories"] = Category.objects.all()
         return context
+
 
 
 def like_post(request, slug):
@@ -72,6 +75,14 @@ class CategoryDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         category = self.get_object()
         context["posts"] = category.posts.all()
+
+        context["posts"] = category.posts.all()
+
+        # Get trending posts (adjust the filter as per your needs)
+        context["trending_posts"] = Post.objects.filter(is_draft=False).order_by('-published_at')[:5]
+
+        # Pass all categories
+        context["categories"] = Category.objects.all()
         return context
 
 
@@ -133,3 +144,4 @@ class ArchiveView(ListView):
         year = self.kwargs["year"]
         month = self.kwargs["month"]
         return Post.objects.filter(published_at__year=year, published_at__month=month)
+

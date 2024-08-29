@@ -1,32 +1,92 @@
 {% extends "base.html" %}
 
-{% block title %}{{ category.name }} - My Blog{% endblock %}
-
 {% block content %}
-<div class="container mx-auto py-8 px-4">
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-        <div class="p-6">
-            <h1 class="text-4xl font-bold text-gray-900 mb-6">{{ category.name }}</h1>
-            <p class="text-gray-600 text-lg mb-6">{{ category.description|default:"No description available" }}</p>
-            
-            {% if category.posts.count > 0 %}
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Posts in this Category</h2>
-                <div class="space-y-6">
-                    {% for post in category.posts.all %}
-                        <div class="bg-gray-100 p-6 rounded-lg shadow hover:bg-gray-200 transition">
-                            <a href="{% url 'post_detail' post.slug %}">
-                                <h3 class="text-2xl font-semibold text-gray-900">{{ post.title }}</h3>
-                                <p class="text-gray-600 mt-2">{{ post.published_at|date:"F j, Y" }}</p>
-                                {% if post.thumbnail %}
-                                    <img class="mt-4 w-full h-48 object-cover rounded-lg" src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
-                                {% endif %}
-                            </a>
+<div class="container-fluid py-3">
+    <div class="container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Category Header -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="blog-text section-header-category text-center">
+                            <div>
+                                <h3 class="section-title-category">
+                                    <span class="line"></span>{{ category.name }}
+                                </h3>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Posts List -->
+                <div class="bg-light mb-3" style="padding: 20px;">
+                    {% for post in category.posts.all %}
+                    <a href="{% url 'post_detail' post.slug %}">
+                        <div class="media mb-4">
+                            <img src="{{ post.thumbnail.url }}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 200px; height: 140px; object-fit: cover;">
+                            <div class="media-body">
+                                <h5>{{ post.title }}</h5>
+                                <p><i>{{ post.published_at|date:"d M Y" }}</i></p>
+                                <p>{{ post.content|truncatewords_html:18|safe }}</p>
+                            </div>
+                        </div>
+                    </a>
                     {% endfor %}
                 </div>
-            {% else %}
-                <p class="text-gray-600">No posts in this category yet.</p>
-            {% endif %}
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4 pt-3 pt-lg-0">
+                <!-- Trending News Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h5 class="m-0">Trending</h5>
+                    </div>
+                    {% for trending in trending_posts %}
+                    <div class="d-flex mb-3">
+                        <img src="{{ trending.thumbnail.url }}" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="{{ trending.category.get_absolute_url }}">{{ trending.category.name }}</a>
+                                <span class="px-1">/</span>
+                                <span>{{ trending.published_at|date:"F j, Y" }}</span>
+                            </div>
+                            <a class="h6 m-0" href="{{ trending.get_absolute_url }}">{{ trending.title }}</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Trending News End -->
+
+                <!-- Categories Section Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h5 class="m-0">Categories</h5>
+                    </div>
+                    <div class="d-flex mb-3 categories-section">
+                        <ul class="categories">
+                            {% for category in categories %}
+                            <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- Categories Section End -->
+
+                <!-- Tags Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h5 class="m-0">Tags</h5>
+                    </div>
+                    <div class="d-flex flex-wrap m-n1">
+                        {% for tag in object.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}" class="btn btn-sm btn-outline-secondary m-1">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Tags End -->
+            </div>
         </div>
     </div>
 </div>

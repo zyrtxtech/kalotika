@@ -64,7 +64,7 @@
                         </a>             
                     </div>
                     <div class="blog-item-text"> 
-                        <a href="{{ post.get_absolute_url }}" class="read-more">Uncategorized</a>
+                        <a href="{{ post.get_absolute_url }}" class="read-more">{{ post.category.name }}</a>
                         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                         <p>{{ post.content|truncatewords_html:10|safe }}</p>
                     </div>
