@@ -16,6 +16,12 @@ class PostListView(ListView):
     context_object_name = "posts"
     paginate_by = 10  # Paginate your posts if needed
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.all()  # Pass categories to context
+        context["trending_posts"] = Post.objects.filter(is_draft=False).order_by('-published_at')[:5]
+        return context
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -100,6 +106,7 @@ class TagDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.objects.filter(tags=self.object)
+        context["categories"] = Category.objects.all()
         return context
 
 
@@ -144,4 +151,10 @@ class ArchiveView(ListView):
         year = self.kwargs["year"]
         month = self.kwargs["month"]
         return Post.objects.filter(published_at__year=year, published_at__month=month)
+    
+
+
+def post_list(request):
+    categories = Category.objects.all()  # Fetch all categories from the database
+    return render(request, 'base.html', {'categories': categories})
 

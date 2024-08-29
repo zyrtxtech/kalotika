@@ -60,11 +60,9 @@
                       Categories
                   </a>
                   <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                      <a class="dropdown-item" href="#technology">Technology</a>
-                      <a class="dropdown-item" href="#lifestyle">Lifestyle</a>
-                      <a class="dropdown-item" href="#entertainment">Entertainment</a>
-                      <a class="dropdown-item" href="#news">News</a>
-                  </div>
+                    {% for category in categories %}
+                      <a class="dropdown-item" href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
+                    {% endfor %}
               </li>
               
                 <li class="nav-item">
